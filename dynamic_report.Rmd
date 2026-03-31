@@ -1,0 +1,51 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{r}
+library(tidyverse)
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vR_yFVNX242un9XFR7YuglMjHCQqkEN3Lkqq6jFFdEpScQ375cJUllypfWKOuemBQWP2IPq7hauoWYw/pub?gid=905058073&single=true&output=csv")
+
+latest_data <- logged_data %>%
+  select(Timestamp,
+         category = 'What category best describes this Instagram advertisement?',
+         format = 'What format was the advertisement in?',
+         panels = 'How many panels / screens were shown in the advertisement?',
+         time = 'When was this advertisement observed?',
+         relevant = 'Was this advertisement relevant to you?')
+```
+
+```{css}
+
+```
+## Instagram advertisement patterns
+
+This section explores how advertisement categories vary between day and night.
+
+
+```{r}
+ggplot(latest_data, aes(x= category, fill = time)) + geom_bar(position = "dodge") + labs (title = "Advertisement category by time of day", x= "Category", y= "Count", fill = "Time of day") + theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+
+
+This section explores which advertisement formats (image, video, carousel) are most commonly used within each category.
+
+
+```{r}
+ggplot(latest_data, aes(x= category, fill = format)) + geom_bar(position = "dodge") + labs(title = "Advertisement format across categories", x= "category", y= "Count", fill= "Format") + theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+top_category <- names(sort(table(latest_data$category), decreasing = TRUE))[1]
+top_format <- names(sort(table(latest_data$format), decreasing = TRUE))[1]
+```
+The most common advertisement category in this dataset is `r top_category`, and the most frequently used advertisement format is `r top_format`. This suggests that visually driven content is pariculary dominant in this category.
+
