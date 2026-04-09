@@ -19,7 +19,7 @@ I am learning *Markdown*, HTML, CSS, and GitHub.
 
 Here is a useful website: [GitHub](https://github.com)
 
-Here is another useful website: [W3Schools](https://www.w3schools.com/css/default.asp))
+Here is another useful website: [W3Schools](https://www.w3schools.com/css/default.asp)
 
 ![Simpsons GIF](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW9wYnlzYXVvbHEzZHlidHJiOTVjbGw4YnNmc2h5ejN2cXVlNHkwdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6MblcP42BekIfhAY/giphy.gif)
 
